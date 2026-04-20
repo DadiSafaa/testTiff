@@ -1,0 +1,41 @@
+{
+  "bbox_epsg4326": {
+    "xmin": 119.6812882755104,
+    "ymin": 11.631256503435878,
+    "xmax": 120.4012882755104,
+    "ymax": 12.351256503435877
+  },
+  "time_range": {
+    "start": "2000-01-01",
+    "end": "2009-12-31"
+  },
+  "inputs": {
+    "mangrove_agb": "Mangrove_agb_Philipines.tif",
+    "mangrove_hba95": "Mangrove_hba95_Philipines.tif",
+    "mangrove_hmax95": "Mangrove_hmax95_Philipines.tif"
+  },
+  "outputs": {
+    "dir": "outputs",
+    "mangrove_cropped_dir": "outputs/mangrove_cropped",
+    "landsat_dir": "outputs/landsat",
+    "aligned_dir": "outputs/aligned",
+    "stack_path": "outputs/aligned/mangrove_stack_3bands_on_landsat.tif"
+  },
+  "landsat": {
+    "stac_api_url": "https://planetarycomputer.microsoft.com/api/stac/v1",
+    "collection_id": "landsat-c2-l2",
+    "max_cloud_cover_percent": 10,
+    "max_items": 120,
+    "composite_method": "median",
+    "rgb_asset_candidates": [
+      ["red", "green", "blue"],
+      ["B04", "B03", "B02"],
+      ["SR_B4", "SR_B3", "SR_B2"]
+    ],
+    "output_rgb_path": "outputs/landsat/landsat_2000_2009_calamian_rgb.tif"
+  },
+  "alignment": {
+    "resampling": "bilinear",
+    "nodata": -9999
+  }
+}
